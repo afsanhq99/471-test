@@ -113,8 +113,9 @@ if (strlen($_SESSION['login']) == 0) {
                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">My Tour History</h3>
                 <form name="chngpwd" method="post" onSubmit="return valid();">
                     <?php if ($error) { ?><div class="errorWrap">
-                        <strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div
-                        class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+                        <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                    </div><?php } else if ($msg) { ?><div class="succWrap">
+                        <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
                     <p>
                     <table border="1" width="100%">
                         <tr align="center">
@@ -165,7 +166,7 @@ if (strlen($_SESSION['login']) == 0) {
                             <?php if ($result->status == 2) {
                                         ?><td>Cancelled</td>
                             <?php } else { ?>
-                            <td><a href="tour-history.php?bkid=<?php echo htmlentities($result->bookid); ?>"
+                            <td><a href="hotel-history.php?bkid=<?php echo htmlentities($result->bookid); ?>"
                                     onclick="return confirm('Do you really want to cancel booking')">Cancel</a></td>
                             <?php } ?>
                         </tr>
