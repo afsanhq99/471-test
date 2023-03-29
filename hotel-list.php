@@ -56,20 +56,20 @@ include('includes/config.php');
                 </a>
                 <form action="searchhotel.php" class="form-inline md-form mr-auto mb-4">
                     <input class="form-control mr-sm-2" name='searched_name' types="text" placeholder="Search by name"
-                        aria-label="Search">
-                    <button class="btn btn-outline-warning mt-2  btn-rounded btn-sm my-0" type="submit">Search By
+                        aria-label="Search" style="color:black;">
+                    <button class=" btn btn-outline-warning mt-2 btn-rounded btn-sm my-0" type="submit">Search By
                         Name</button>
                 </form>
 
 
                 <form action="searchhotel.php" class="form-inline md-form mr-auto mb-4">
                     <input class="form-control mr-sm-2" name='searched_price1' types="text" placeholder="Price"
-                        aria-label="Search">
-                    <button class="btn btn-outline-primary mt-2  btn-rounded btn-sm my-0" type="submit">Price1</button>
+                        aria-label="Search" style="color:black;">
+
 
                     <input class="form-control mr-sm-2" name='searched_price2' types="text" placeholder="Price"
-                        aria-label="Search">
-                    <button class="btn btn-outline-warning mt-2  btn-rounded btn-sm my-0" type="submit">Price2</button>
+                        aria-label="Search" style="color:black;">
+                    <button class=" btn btn-outline-warning mt-2 btn-rounded btn-sm my-0" type="submit">Price</button>
                 </form>
 
 
@@ -79,7 +79,7 @@ include('includes/config.php');
                     <input class="form-control mr-sm-2" name='searched_location' types="text" placeholder="Location"
                         aria-label="Search">
                     <button class="btn btn-dark  btn-rounded btn-sm my-0" type="submit">Location</button>
-                    <button type="button" class="btn btn-dark">Dark</button>
+
                 </form>
 
                 <?php $sql = "SELECT * from hoteltourhotels";

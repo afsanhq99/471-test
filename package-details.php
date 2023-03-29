@@ -3,27 +3,27 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if (isset($_POST['submit2'])) {
-	$pid = intval($_GET['pkgid']);
-	$useremail = $_SESSION['login'];
-	$fromdate = $_POST['fromdate'];
-	$todate = $_POST['todate'];
-	$comment = $_POST['comment'];
-	$status = 0;
-	$sql = "INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-	$query = $dbh->prepare($sql);
-	$query->bindParam(':pid', $pid, PDO::PARAM_STR);
-	$query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-	$query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-	$query->bindParam(':todate', $todate, PDO::PARAM_STR);
-	$query->bindParam(':comment', $comment, PDO::PARAM_STR);
-	$query->bindParam(':status', $status, PDO::PARAM_STR);
-	$query->execute();
-	$lastInsertId = $dbh->lastInsertId();
-	if ($lastInsertId) {
-		$msg = "Booked Successfully";
-	} else {
-		$error = "Something went wrong. Please try again";
-	}
+    $pid = intval($_GET['pkgid']);
+    $useremail = $_SESSION['login'];
+    $fromdate = $_POST['fromdate'];
+    $todate = $_POST['todate'];
+    $comment = $_POST['comment'];
+    $status = 0;
+    $sql = "INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':pid', $pid, PDO::PARAM_STR);
+    $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
+    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
+    $query->bindParam(':comment', $comment, PDO::PARAM_STR);
+    $query->bindParam(':status', $status, PDO::PARAM_STR);
+    $query->execute();
+    $lastInsertId = $dbh->lastInsertId();
+    if ($lastInsertId) {
+        $msg = "Booked Successfully";
+    } else {
+        $error = "Something went wrong. Please try again";
+    }
 }
 ?>
 <!DOCTYPE HTML>
@@ -98,15 +98,15 @@ if (isset($_POST['submit2'])) {
                 <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
             </div><?php } ?>
             <?php
-			$pid = intval($_GET['pkgid']);
-			$sql = "SELECT * from tbltourpackages where PackageId=:pid";
-			$query = $dbh->prepare($sql);
-			$query->bindParam(':pid', $pid, PDO::PARAM_STR);
-			$query->execute();
-			$results = $query->fetchAll(PDO::FETCH_OBJ);
-			$cnt = 1;
-			if ($query->rowCount() > 0) {
-				foreach ($results as $result) {	?>
+            $pid = intval($_GET['pkgid']);
+            $sql = "SELECT * from tbltourpackages where PackageId=:pid";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':pid', $pid, PDO::PARAM_STR);
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_OBJ);
+            $cnt = 1;
+            if ($query->rowCount() > 0) {
+                foreach ($results as $result) {    ?>
 
             <form name="book" method="post">
                 <div class="selectroom_top" style="background-color:#ddd;  border-radius:10px; box-shadow: 10px 5px 5px teal;>
@@ -130,7 +130,23 @@ if (isset($_POST['submit2'])) {
                             <label class="inputLabel">To</label>
                             <input class="date" id="datepicker1" type="text" placeholder="dd-mm-yyyy" name="todate"
                                 required="">
+
+
                         </div>
+                        <br></br>
+                        <br></br>
+                        <form action="/action_page.php">
+                            <br></br>
+                            <label for="adult">Adults :</label>
+                            <input type="number" id="adult" name="adult" min="1" max="7">
+
+                        </form>
+                        <br></br>
+                        <form action="/action_page.php">
+                            <label for="child">Childs :</label>
+                            <input type="number" id="child" name="child" min="1" max="5">
+
+                        </form>
                     </div>
                     <div class="clearfix"></div>
                     <div class="grand">
@@ -169,7 +185,7 @@ if (isset($_POST['submit2'])) {
         </div>
         </form>
         <?php }
-			} ?>
+            } ?>
 
 
     </div>

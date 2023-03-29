@@ -56,17 +56,17 @@ include('includes/config.php');
                 </a>
                 <form action="search.php" class="form-inline md-form mr-auto mb-4">
                     <input class="form-control mr-sm-2" name='searched_name' types="text" placeholder="Search by name"
-                        aria-label="Search">
-                    <button class="btn btn-outline-warning mt-2  btn-rounded btn-sm my-0" type="submit">Search By
-                        Name</button>
+                        aria-label="Search" style="color:black;>
+                    <button class=" btn btn-outline-warning mt-2 btn-rounded btn-sm my-0" type="submit">Search By
+                    Name</button>
                 </form>
 
 
                 <form action="search.php" class="form-inline md-form mr-auto mb-4">
                     <input class="form-control mr-sm-2" name='searched_price1' types="text" placeholder="Price1"
-                        aria-label="Search">
+                        aria-label="Search" style="color:black;>
 
-                    <input class="form-control mr-sm-2" name='searched_price2' types="text" placeholder="Price2"
+                    <input class=" form-control mr-sm-2" name='searched_price2' types="text" placeholder="Price2"
                         aria-label="Search">
                     <button class="btn btn-outline-warning mt-2  btn-rounded btn-sm my-0" type="submit">Price</button>
                 </form>
@@ -75,19 +75,19 @@ include('includes/config.php');
 
 
                 <form action="search.php" class="form-inline md-form mr-auto mb-4">
-                    <input class="form-control mr-sm-2" name='searched_location' types="text" placeholder="Location"
-                        aria-label="Search">
+                    <input class="form-control mr-sm-2" name='searched_location' types="text" placeholder="Location "
+                        aria-label="Search" style="color:black;">
                     <button class="btn btn-dark  btn-rounded btn-sm my-0" type="submit">Location</button>
 
                 </form>
 
                 <?php $sql = "SELECT * from tbltourpackages";
-				$query = $dbh->prepare($sql);
-				$query->execute();
-				$results = $query->fetchAll(PDO::FETCH_OBJ);
-				$cnt = 1;
-				if ($query->rowCount() > 0) {
-					foreach ($results as $result) {    ?>
+                $query = $dbh->prepare($sql);
+                $query->execute();
+                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                $cnt = 1;
+                if ($query->rowCount() > 0) {
+                    foreach ($results as $result) {    ?>
                 <div class="rom-btm">
                     <div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
                         <img src="admin/pacakgeimages/<?php echo htmlentities($result->PackageImage); ?>"
@@ -109,7 +109,7 @@ include('includes/config.php');
                 </div>
 
                 <?php }
-				} ?>
+                } ?>
 
 
                 <div><a href="package-list.php" class="view">View More Packages</a></div>
