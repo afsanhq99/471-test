@@ -156,7 +156,7 @@ if (isset($_POST['submit3'])) {
 
 
 
-                                    echo htmlentities($result->HotelPrice); ?></h3>
+                                    echo htmlentities($result->HotelPrice); ?> Tk</h3>
                             </div>
                         </div>
                         <h3>Hotel Details</h3>
