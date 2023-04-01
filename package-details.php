@@ -136,7 +136,7 @@ if (isset($_POST['submit2'])) {
                             <div class="clearfix"></div>
                             <div class="grand">
                                 <p>Grand Total</p>
-                                <h3><?php echo htmlentities($result->PackagePrice) ?></h3>
+                                <h3><?php echo htmlentities($result->PackagePrice) ?> Tk</h3>
                             </div>
                         </div>
                         <h3>Package Details</h3>
