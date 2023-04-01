@@ -1,3 +1,3 @@
 <div class="copyrights">
-	 <p>© 2020 TMS. All Rights Reserved |  <a href="#">TMS</a> </p>
-</div>	
+	<p>© 2023 Triumph Tourism. All Rights Reserved | <a href="#">TMS</a> </p>
+</div>
