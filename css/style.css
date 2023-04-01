@@ -242,6 +242,16 @@ i.fa.fa-lock {
     -webkit-appearance: none;
     margin-top: 10px;
 }
+.bnr-left input[type="tel"] {
+    width: 95%;
+    color: #9E9E9E;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 10px;
+    border: 1px solid #9E9E9E;
+    -webkit-appearance: none;
+    margin-top: 10px;
+}
 
 .ban-top .inputLabel,
 .ban-bottom .inputLabel {
