@@ -131,23 +131,32 @@ if (isset($_POST['submit3'])) {
                                 <br></br>
 
 
-                                <form action="/action_page.php">
-                                    <label for="adult">Adults :</label>
-                                    <input type="number" id="adult" name="adult" min="1" max="7">
 
-                                </form>
+                                <label for="adult">Adults :</label>
+                                <input type="number" id="adult" name="adult" min="1" max="7">
+
+
                                 <br></br>
-                                <form action="/action_page.php">
-                                    <label for="child">Childs :</label>
-                                    <input type="number" id="child" name="child" min="1" max="5" required>
 
-                                </form>
+                                <label for="child">Childs :</label>
+                                <input type="number" id="child" name="child" min="1" max="5">
+
+
+                                <li class="spe">
+                                    <label class="inputLabel">Comment</label>
+                                    <input class="special" type="text" name="comment">
+                                </li>
 
                             </div>
                             <div class="clearfix"></div>
                             <div class="grand">
+
                                 <p>Grand Total</p>
-                                <h3><?php echo htmlentities($result->HotelPrice) ?></h3>
+                                <h3><?php
+
+
+
+                                    echo htmlentities($result->HotelPrice); ?></h3>
                             </div>
                         </div>
                         <h3>Hotel Details</h3>
