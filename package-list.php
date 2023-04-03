@@ -98,6 +98,8 @@ include('includes/config.php');
                         <p style="color:black;"><b>Package Location :</b>
                             <?php echo htmlentities($result->PackageLocation); ?></p>
                         <p style="color:black;"><b>Features</b> <?php echo htmlentities($result->PackageFetures); ?></p>
+                        <p style="color:black;"><b>Description</b> <?php echo htmlentities($result->PackageDetails); ?>
+                        </p>
                     </div>
                     <div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
                         <h5 style="color:black;"> <?php echo htmlentities($result->PackagePrice); ?> TK</h5>

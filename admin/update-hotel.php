@@ -146,10 +146,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <div class="form-group">
                                     <label for="focusedinput" class="col-sm-2 control-label">Hotel Price in
-                                        USD</label>
+                                        TK</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control1" name="Hotelprice" id="Hotelprice"
-                                            placeholder=" Hotel Price is USD"
+                                            placeholder=" Hotel Price is TK"
                                             value="<?php echo htmlentities($result->HotelPrice); ?>" required>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="col-sm-8">
                                         <img src="hotelimages/<?php echo htmlentities($result->HotelImage); ?>"
                                             width="200">&nbsp;&nbsp;&nbsp;<a
-                                            href="change-image.php?imgid=<?php echo htmlentities($result->HotelId); ?>">Change
+                                            href="change-hotel-image.php?imgid=<?php echo htmlentities($result->HotelId); ?>">Change
                                             Image</a>
                                     </div>
                                 </div>

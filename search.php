@@ -27,7 +27,7 @@ include('includes/config.php');
     <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
     <script src="js/wow.min.js"></script>
     <script>
-    new WOW().init();
+        new WOW().init();
     </script>
     <!--//end-animate-->
 </head>
@@ -36,8 +36,7 @@ include('includes/config.php');
     <?php include('includes/header.php'); ?>
     <div class="banner" style="height: 700px; ">
         <div class="container">
-            <h1 class="wow zoomIn animated animated" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> Triumph Tourism
+            <h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> Triumph Tourism
             </h1>
         </div>
     </div>
@@ -46,8 +45,7 @@ include('includes/config.php');
     <!--- rupes ---->
     <div class="container">
         <div class="rupes" style="background-color:#fff;" ; border-radius: 25px;">
-            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
                 <div class="rup-left">
                     <a href="offers.html"><i class="fa fa-usd"></i></a>
                 </div>
@@ -58,8 +56,7 @@ include('includes/config.php');
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
                 <div class="rup-left">
                     <a href="offers.html"><i class="fa fa-h-square"></i></a>
                 </div>
@@ -70,8 +67,7 @@ include('includes/config.php');
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+            <div class="col-md-4 rupes-left wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
                 <div class="rup-left">
                     <a href="offers.html"><i class="fa fa-mobile"></i></a>
                 </div>
@@ -135,31 +131,27 @@ include('includes/config.php');
             $cnt = 1;
             if ($query->rowCount() > 0) {
                 foreach ($results as $result) {    ?>
-            <div class="rom-btm" style="border-radius: 10px;">
-                <div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
-                    <img src="admin/pacakgeimages/<?php echo htmlentities($result->PackageImage); ?>"
-                        class="img-responsive" alt="">
-                </div>
-                <div class="col-md-6 room-midle wow fadeInUp animated" data-wow-delay=".5s">
-                    <h4>Package Name: <?php echo htmlentities($result->PackageName); ?></h4>
-                    <h6 style="color:black;">Package Type : <?php echo htmlentities($result->PackageType); ?>
-                    </h6>
-                    <p style="color:black;"><b>Package Location :</b>
-                        <?php echo htmlentities($result->PackageLocation); ?></p>
-                    <p style="color:black;"> <b>Features</b>
-                        <?php echo htmlentities($result->PackageFetures); ?>
-                        </pstyle=>
-                </div>
-                <div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
-                    <h5>USD <?php echo htmlentities($result->PackagePrice); ?></h5>
-                    <a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId); ?>"
-                        class="view">Details</a>
-                </div>
-                <div class="clearfix"
-                    style="background-color:#ddd;  border-radius:4px; border-radius: 10px ; box-shadow: 10px 5px 5px teal;"
-                    ;">
-                </div>
-            </div>
+                    <div class="rom-btm" style="border-radius: 10px;">
+                        <div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
+                            <img src="admin/pacakgeimages/<?php echo htmlentities($result->PackageImage); ?>" class="img-responsive" alt="">
+                        </div>
+                        <div class="col-md-6 room-midle wow fadeInUp animated" data-wow-delay=".5s">
+                            <h4>Package Name: <?php echo htmlentities($result->PackageName); ?></h4>
+                            <h6 style="color:black;">Package Type : <?php echo htmlentities($result->PackageType); ?>
+                            </h6>
+                            <p style="color:black;"><b>Package Location :</b>
+                                <?php echo htmlentities($result->PackageLocation); ?></p>
+                            <p style="color:black;"> <b>Features</b>
+                                <?php echo htmlentities($result->PackageFetures); ?>
+                                </pstyle=>
+                        </div>
+                        <div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
+                            <h5 style="color:black;"> <?php echo htmlentities($result->PackagePrice); ?> Tk</h5>
+                            <a href="package-details.php?pkgid=<?php echo htmlentities($result->PackageId); ?>" class="view">Details</a>
+                        </div>
+                        <div class="clearfix" style="background-color:#ddd;  border-radius:4px; border-radius: 10px ; box-shadow: 10px 5px 5px teal;" ;">
+                        </div>
+                    </div>
 
             <?php }
             } ?>
