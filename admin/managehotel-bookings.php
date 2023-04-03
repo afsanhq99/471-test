@@ -131,7 +131,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <!-- tables -->
                 <?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?>
                 </div><?php } else if ($msg) { ?><div class="succWrap">
-                    <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+                    <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
+                </div><?php } ?>
                 <div class="agile-tables">
                     <div class="w3l-table-info">
                         <h2>Manage Bookings</h2>
@@ -184,10 +185,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <?php if ($result->status == 2) {
                                                 ?><td>Cancelled</td>
+
+                                    <?php } elseif ($result->status == 1) {
+                                                ?><td>Confirmed</td>
+
                                     <?php } else { ?>
-                                    <td><a href="manage-bookings.php?bkid=<?php echo htmlentities($result->bookid); ?>"
+                                    <td><a href="managehotel-bookings.php?bkid=<?php echo htmlentities($result->bookid); ?>"
                                             onclick="return confirm('Do you really want to cancel booking')">Cancel</a>
-                                        / <a href="manage-bookings.php?bckid=<?php echo htmlentities($result->bookid); ?>"
+                                        / <a href="managehotel-bookings.php?bckid=<?php echo htmlentities($result->bookid); ?>"
                                             onclick="return confirm('booking has been confirm')">Confirm</a></td>
                                     <?php } ?>
 

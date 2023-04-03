@@ -165,6 +165,9 @@ include('includes/config.php');
                 <div class="clearfix"></div>
             </div>
 
+            <br></br>
+            <br></br>
+
 
 
             <!--- routes ---->
@@ -178,7 +181,7 @@ include('includes/config.php');
             <!-- //signin -->
             <!-- write us -->
             <?php include('includes/write-us.php'); ?>
-            <?php include('includes/footer.php'); ?>
+            <?php include('includes/footer2.php'); ?>
             <!-- //write us -->
 </body>
 

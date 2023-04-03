@@ -87,8 +87,8 @@ include('includes/config.php');
                 $cnt = 1;
                 if ($query->rowCount() > 0) {
                     foreach ($results as $result) {    ?>
-                <div class="rom-btm">
-                    <div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
+                <div class="rom-btm" style="border-radius: 10px;">
+                    <div class=" col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
                         <img src="admin/pacakgeimages/<?php echo htmlentities($result->PackageImage); ?>"
                             class="img-responsive" alt="">
                     </div>
@@ -97,7 +97,9 @@ include('includes/config.php');
                         <h6 style="color:black;"> Package Type : <?php echo htmlentities($result->PackageType); ?></h6>
                         <p style="color:black;"><b>Package Location :</b>
                             <?php echo htmlentities($result->PackageLocation); ?></p>
+                        <br></br>
                         <p style="color:black;"><b>Features</b> <?php echo htmlentities($result->PackageFetures); ?></p>
+                        <br></br>
                         <p style="color:black;"><b>Description</b> <?php echo htmlentities($result->PackageDetails); ?>
                         </p>
                     </div>
@@ -107,7 +109,8 @@ include('includes/config.php');
                             class="view">Details</a>
                     </div>
                     <div class="clearfix"
-                        style="background-color:#ddd;  border-radius:7px; box-shadow: 10px 5px 5px teal;"></div>
+                        style="background-color:#ddd;  border-radius:7px; box-shadow: 10px 5px 5px teal;">
+                    </div>
                 </div>
 
                 <?php }
