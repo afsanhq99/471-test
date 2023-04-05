@@ -151,8 +151,12 @@ if (isset($_POST['submit3'])) {
 
 
                                     echo htmlentities($result->HotelPrice); ?> Tk</h3>
+                        <br></br>
+                        <button> <a href="hotel-payment.php"> Proceed to pay</a></button>
                     </div>
+
                 </div>
+
                 <h3>Hotel Details</h3>
                 <p style="padding-top: 1%;color:black;"><?php echo htmlentities($result->HotelDetails); ?> </p>
                 <div class="clearfix"></div>
