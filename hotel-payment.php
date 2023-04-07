@@ -2,30 +2,16 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if (isset($_POST['submit'])) {
-    $pid = intval($_GET['pkgid']);
-    $useremail = $_SESSION['login'];
-    $fromdate = $_POST['fromdate'];
-    $todate = $_POST['todate'];
-    $comment = $_POST['comment'];
-    $status = 0;
-    $sql = "INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':pid', $pid, PDO::PARAM_STR);
-    $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
-    $query->bindParam(':comment', $comment, PDO::PARAM_STR);
-    $query->bindParam(':status', $status, PDO::PARAM_STR);
-    $query->execute();
-    $lastInsertId = $dbh->lastInsertId();
-    if ($lastInsertId) {
-        $msg = "Booked Successfully";
-    } else {
-        $error = "Something went wrong. Please try again";
-    }
-}
+
+
+
+
+
+
+
 ?>
+
+
 <!DOCTYPE HTML>
 <html>
 
@@ -50,31 +36,31 @@ if (isset($_POST['submit'])) {
     <script src="js/wow.min.js"></script>
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script>
-        new WOW().init();
+    new WOW().init();
     </script>
     <script src="js/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $("#datepicker,#datepicker1").datepicker();
-        });
+    $(function() {
+        $("#datepicker,#datepicker1").datepicker();
+    });
     </script>
     <style>
-        body {
-            margin-top: 20px;
-        }
+    body {
+        margin-top: 20px;
+    }
 
-        .panel-title {
-            display: inline;
-            font-weight: bold;
-        }
+    .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
 
-        .checkbox.pull-right {
-            margin: 0;
-        }
+    .checkbox.pull-right {
+        margin: 0;
+    }
 
-        .pl-ziro {
-            padding-left: 0px;
-        }
+    .pl-ziro {
+        padding-left: 0px;
+    }
     </style>
 </head>
 
@@ -82,83 +68,72 @@ if (isset($_POST['submit'])) {
     <!-- top-header -->
     <?php include('includes/header.php'); ?>
 
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Payment Details
-                        </h3>
-                        <div class="checkbox pull-right">
-                            <label>
-                                <input type="checkbox" />
-                                Remember
-                            </label>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="cardNumber">
-                                    CARD NUMBER</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" required autofocus />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-7 col-md-7">
-                                    <div class="form-group">
-                                        <label for="expityMonth">
-                                            EXPIRY DATE</label>
-                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                            <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
-                                        </div>
-                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                            <input type="text" class="form-control" id="expityYear" placeholder="YY" required />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-5 col-md-5 pull-right">
-                                    <div class="form-group">
-                                        <label for="cvCode">
-                                            CV CODE</label>
-                                        <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
-                    </li>
-                </ul>
-                <br />
-                <button type="submit" name="submit2" class="btn-primary btn">Pay</button>
+    <div class="container mt-5">
+        <form action="hotelpay.php" method="POST">
+            <div class="form-group">
+                <label for="name">Name on Card:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="card_number">Card Number:</label>
+                <input type="number" class="form-control" id="card_number" name="card_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expiry_date">Expiry Date:</label>
+                <input type="number" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="number" class="form-control" id="cvv" name="cvv" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" class="form-control" id="amount" name="amount" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-    <!--- /selectroom ---->
-    <<!--- /footer-top ---->
-        <?php include('includes/footer.php'); ?>
-        <!-- signup -->
-        <?php include('includes/signup.php'); ?>
-        <!-- //signu -->
-        <!-- signin -->
-        <?php include('includes/signin.php'); ?>
-        <!-- //signin -->
-        <!-- write us -->
-        <?php include('includes/write-us.php'); ?>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+<!--- /selectroom ---->
+<<!--- /footer-top ---->
+    <?php include('includes/footer.php'); ?>
+    <!-- signup -->
+    <?php include('includes/signup.php'); ?>
+    <!-- //signu -->
+    <!-- signin -->
+    <?php include('includes/signin.php'); ?>
+    <!-- //signin -->
+    <!-- write us -->
+    <?php include('includes/write-us.php'); ?>
+    </body>
+
+    </html>

@@ -10,6 +10,7 @@ if ($_SESSION['login']) { ?>
             <li class="prnt"><a href="hotel-history.php">My Hotel History</a></li>
             <li class="prnt"><a href="issuetickets.php">Package Issue Tickets</a></li>
             <li class="prnt"><a href="issueticketshotels.php">Hotel Issue Tickets</a></li>
+
         </ul>
         <ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s">
             <li class="tol">Welcome :</li>
@@ -85,6 +86,7 @@ if ($_SESSION['login']) { ?>
                             <li><a href="page.php?type=privacy">Privacy Policy</a></li>
                             <li><a href="page.php?type=terms">Terms of Use</a></li>
                             <li><a href="page.php?type=contact">Contact Us</a></li>
+                            <li class="prnt"><a href="customize_package.php">Customize Tour</a></li>
                             <?php if ($_SESSION['login']) { ?>
                             <li>Need Help?<a href="#" data-toggle="modal" data-target="#myModal3"> / Write Us </a> </li>
                             <?php } else { ?>

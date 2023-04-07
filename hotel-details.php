@@ -21,6 +21,8 @@ if (isset($_POST['submit3'])) {
     $lastInsertId = $dbh->lastInsertId();
     if ($lastInsertId) {
         $msg = "Booked Successfully";
+        header("Location: hotel-payment.php");
+
     } else {
         $error = "Something went wrong. Please try again";
     }
@@ -108,7 +110,7 @@ if (isset($_POST['submit3'])) {
             if ($query->rowCount() > 0) {
                 foreach ($results as $result) {    ?>
 
-            <form name="book" method="post">
+            <form action name="book" method="post">
                 <div class="selectroom_top" style="background-color:#ddd;  border-radius:10px; box-shadow: 10px 5px 5px teal;>
 							<div class=" col-md-4 selectroom_left wow fadeInLeft animated" data-wow-delay=".5s">
                     <img src="admin/hotelimages/<?php echo htmlentities($result->HotelImage); ?>" class="img-responsive"
@@ -146,11 +148,13 @@ if (isset($_POST['submit3'])) {
                     <div class="grand">
 
                         <p>Grand Total</p>
-                        <h3><?php
+                        <h3 id="unit-price"><?php
 
 
 
                                     echo htmlentities($result->HotelPrice); ?> Tk</h3>
+
+                        <h2 id="total-price"> Total </h2>
                         <br></br>
                         <button> <a href="hotel-payment.php"> Proceed to pay</a></button>
                     </div>
@@ -162,7 +166,7 @@ if (isset($_POST['submit3'])) {
                 <div class="clearfix"></div>
         </div>
         <div class="selectroom_top">
-            <h2>Travels</h2>
+            <h2>Hotels</h2>
             <div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms"
                 data-wow-delay="500ms"
                 style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
@@ -194,6 +198,11 @@ if (isset($_POST['submit3'])) {
 
     </div>
     </div>
+    <script>
+
+
+
+    </script>
     <!--- /selectroom ---->
     <<!--- /footer-top ---->
         <?php include('includes/footer.php'); ?>

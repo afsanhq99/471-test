@@ -194,6 +194,14 @@ if (isset($_POST['submit2'])) {
 
     </div>
     </div>
+    <script >
+        function test(){
+
+            
+        }
+
+
+    </script>
     <!--- /selectroom ---->
     <<!--- /footer-top ---->
         <?php include('includes/footer.php'); ?>
