@@ -16,19 +16,24 @@ error_reporting(0);
         // Taking all 5 values from the form data(input)
 
      $useremail = $_SESSION['login'];
-     $name = $_POST['name'];
+     $destination= $_POST['destination'];
 
 
-     $card_number = $_POST['card_number'];
-     $expiry_date = $_POST['expiry_date'];
+     $from_date = $_POST['from_date'];
+     $to_date = $_POST['to_date'];
 
-     $amount = $_POST['amount'];
+     $budget = $_POST['budget'];
+     
+     $adults = $_POST['adults'];
+     
+     $children = $_POST['children'];
+     
 
 
      // Performing insert query execution
      // here our table name is college
-     $sql = "INSERT INTO hotelpayment  VALUES ('$name',
-            '$card_number','$expiry_date','$amount','$useremail')";
+     $sql = "INSERT INTO customize_tour  VALUES ('$destination',
+            '$budget','$from_date','$to_date','$useremail','$adults','$children')";
 
      if (mysqli_query($conn, $sql)) {
          echo "<h3>data stored in a database successfully."

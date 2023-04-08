@@ -2,37 +2,13 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if (isset($_POST['submit3'])) {
-    $pid = intval($_GET['pkgid']);
-    $useremail = $_SESSION['login'];
-    $fromdate = $_POST['fromdate'];
-    $todate = $_POST['todate'];
-    $comment = $_POST['comment'];
-    $status = 0;
-    $sql = "INSERT INTO hotelbooking(HotelId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':pid', $pid, PDO::PARAM_STR);
-    $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
-    $query->bindParam(':comment', $comment, PDO::PARAM_STR);
-    $query->bindParam(':status', $status, PDO::PARAM_STR);
-    $query->execute();
-    $lastInsertId = $dbh->lastInsertId();
-    if ($lastInsertId) {
-        $msg = "Booked Successfully";
-        header("Location: hotel-payment.php");
 
-    } else {
-        $error = "Something went wrong. Please try again";
-    }
-}
 ?>
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>Triumph Tourism | Hotel Details</title>
+    <title>Customize Package</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="applijewelleryion/x-javascript">
@@ -61,22 +37,21 @@ if (isset($_POST['submit3'])) {
     });
     </script>
     <style>
-    .errorWrap {
-        padding: 10px;
-        margin: 0 0 20px 0;
-        background: #fff;
-        border-left: 4px solid #dd3d36;
-        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    body {
+        margin-top: 20px;
     }
 
-    .succWrap {
-        padding: 10px;
-        margin: 0 0 20px 0;
-        background: #fff;
-        border-left: 4px solid #5cb85c;
-        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .checkbox.pull-right {
+        margin: 0;
+    }
+
+    .pl-ziro {
+        padding-left: 0px;
     }
     </style>
 </head>
@@ -84,101 +59,165 @@ if (isset($_POST['submit3'])) {
 <body>
     <!-- top-header -->
     <?php include('includes/header.php'); ?>
-    <div class="banner-3">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+    <!------ Include the above in your HEAD tag ---------->
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customize Tour Package</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+            integrity="sha512-DgGY40t8apHqo3FyLxUSXhE4f4otjK4+1Zzmk2ix/SiP+vccS+7Kj0UyI9BjKsW8Ov22bwLlUZwKSm6T8Y86tw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Custom CSS -->
+        <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-wrapper {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            height: 48px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px #007bff;
+        }
+
+        .form-btn {
+            height: 48px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #0069d9;
+        }
+
+        .form-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+        }
+        </style>
+    </head>
+
+    <body>
         <div class="container">
-            <h1 class="wow zoomIn animated animated" data-wow-delay=".5s"
-                style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> Triumph Tourism -Hotel
-                Details</h1>
-        </div>
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Create Your Custom Tour Package</h1>
-                <p>Choose your preferred destinations and activities to create your perfect tour package.</p>
-            </div>
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <select class="form-control" id="destination">
-                    <option>Select a destination</option>
-                    <option>Cox'Bazar</option>
-                    <option>Los Angeles</option>
-                    <option>Miami</option>
-                    <option>San Francisco</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="activities">Activities</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="activity1">
-                    <label class="form-check-label" for="activity1">
-                        Sightseeing
-                    </label>
+            <h2>Customize Your Package</h2>
+            <form action="packagecus.php" method="post">
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" class="form-control" id="destination" name="destination" required>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="activity2">
-                    <label class="form-check-label" for="activity2">
-                        Hiking
-                    </label>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="from-date">From Date:</label>
+                        <input type="date" class="form-control" id="from-date" name="from_date" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="to-date">To Date:</label>
+                        <input type="date" class="form-control" id="to-date" name="to_date" required>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="activity3">
-                    <label class="form-check-label" for="activity3">
-                        Shopping
-                    </label>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="budget">Budget:</label>
+                        <input type="number" class="form-control" id="budget" name="budget" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="adults">Number of Adults:</label>
+                        <input type="number" class="form-control" id="adults" name="adults" min="1" required>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="activity4">
-                    <label class="form-check-label" for="activity4">
-                        Beach
-                    </label>
+                <div class="form-group">
+                    <label for="children">Number of Children:</label>
+                    <input type="number" class="form-control" id="children" name="children" min="0" required>
                 </div>
-
-            </div>
-            <br></br>
-            <div class="form-group">
-                <label for="budget">Budget</label>
-                <input type="range" class="form-control-range" id="budget" min="0" max="10000" step="100" value="5000">
-                <span id="budgetValue">$5000</span>
-            </div>
-
-            <div class="bnr-right">
-                <label class="inputLabel">From</label>
-                <input class="date" id="datepicker" type="text" placeholder="dd-mm-yyyy" name="fromdate" required="">
-            </div>
-            <div class="bnr-right">
-                <label class="inputLabel">To</label>
-                <input class="date" id="datepicker1" type="text" placeholder="dd-mm-yyyy" name="todate">
-
-            </div>
-
-
-            <br></br>
-            <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            </form>
+        </div>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-W2dS7LKtIh9Io4BvC4W4LHftPXtmh//L/lmMAa3nWjzku7AZtR9aNTlYvA8WNo3wY3OJLd/XL7VJfsWIVIbq3Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+            integrity="sha512-GOG7VSwyW/Mu8qV44c2XKj5NY5C5/F5a7zELsjjKlZChfUaxpe6pj14K6Ug9XyGFWn6ogodrGWXXYfsZYY8Q6A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Custom JS -->
+        <script>
+        $(document).ready(function() {
+            $('#customizeForm').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'customize.php',
+                    type: 'POST',
+                    data: $('#customizeForm').serialize(),
+                    success: function(response) {
+                        // Handle success response here
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response here
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+        </script>
+    </body>
+
+    </html>
 
 
-        </form>
-    </div>
-
-
-    <script>
-    // Update budget value based on slider
-    const budgetSlider = document.getElementById("budget");
-    const budgetValue = document.getElementById("budgetValue");
-    budgetSlider.oninput = function() {
-        budgetValue.innerHTML = "$" + this.value;
-    }
-    </script>
-    </div>
-    <script>
 
 
 
-    </script>
+
+
+
+
+
+
+
+
     <!--- /selectroom ---->
     <<!--- /footer-top ---->
         <?php include('includes/footer.php'); ?>

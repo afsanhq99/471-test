@@ -2,6 +2,33 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+if (isset($_POST['submit'])) {
+  
+    $useremail = $_SESSION['login'];
+    $name = $_POST['name'];
+    $card = $_POST['card'];
+    $expiry_date = $_POST['expiry_date'];
+    $amount = $_POST['amount'];
+    $status = 0;
+    $sql = "INSERT INTO hotelpayment(Name,Card,Expiry,Amount) VALUES(:name,:card,:expiry_date,:amount)";
+    $query = $dbh->prepare($sql);
+
+    $query->bindParam(':name', $name, PDO::PARAM_STR);
+    $query->bindParam(':card', $card, PDO::PARAM_STR);
+    $query->bindParam(':expiry', $expiry, PDO::PARAM_STR);
+    $query->bindParam(':amount', $amount, PDO::PARAM_STR);
+   
+    $query->execute();
+    $lastInsertId = $dbh->lastInsertId();
+    if ($lastInsertId) {
+        $msg = "Booked Successfully";
+        echo "message";
+        header("Location: hotel-payment.php");
+
+    } else {
+        $error = "Something went wrong. Please try again";
+    }
+}
 
 
 

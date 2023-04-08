@@ -79,6 +79,15 @@
                     <div class="clearfix"></div>
                 </a></li>
 
+            <li><a href="check_payments.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Manage
+                        Payments</span>
+                    <div class="clearfix"></div>
+                </a></li>
+            <li><a href="checkrequest.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Manage
+                        Requests</span>
+                    <div class="clearfix"></div>
+                </a></li>
+
 
         </ul>
     </div>
