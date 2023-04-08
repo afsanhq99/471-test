@@ -21,6 +21,7 @@ if (isset($_POST['submit3'])) {
     $lastInsertId = $dbh->lastInsertId();
     if ($lastInsertId) {
         $msg = "Booked Successfully";
+        echo "message";
         header("Location: hotel-payment.php");
 
     } else {
@@ -148,7 +149,10 @@ if (isset($_POST['submit3'])) {
                     <div class="grand">
 
                         <p>Grand Total</p>
-                        <h3 id="unit-price"><?php
+                        <h3 id="unit-price">
+
+
+                            <?php
 
 
 
@@ -156,7 +160,7 @@ if (isset($_POST['submit3'])) {
 
                         <h2 id="total-price"> Total </h2>
                         <br></br>
-                        <button> <a href="hotel-payment.php"> Proceed to pay</a></button>
+
                     </div>
 
                 </div>
@@ -199,9 +203,16 @@ if (isset($_POST['submit3'])) {
     </div>
     </div>
     <script>
+    $a = document.getElementById('datepicker').value.substr(8, 10);
+    $b = document.getElementById('datepicker1').value.substr(8, 10);
+
+    $a1 = parseInt($a);
+    $a2 = parseInt($b);
+    $diff = $b - $a;
+    document.getElementById('unit-price').innerHTML = $diff * <?php  echo htmlentities($result->HotelPrice); ?>
 
 
-
+    //num will equal 1 as a int
     </script>
     <!--- /selectroom ---->
     <<!--- /footer-top ---->
