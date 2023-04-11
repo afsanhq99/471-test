@@ -22,7 +22,7 @@ if (isset($_POST['submit3'])) {
     if ($lastInsertId) {
         $msg = "Booked Successfully";
         echo "message";
-        
+        header("Location: hotel-payment.php");
 
     } else {
         $error = "Something went wrong. Please try again";
@@ -203,9 +203,7 @@ if (isset($_POST['submit3'])) {
         );
         if (sdate > edate) {
             console.log("Greater");
-            alert("Please check the date")
-            document.getElementById('unit-price').innerHTML = "-" + diffDays *
-                <?php echo htmlentities($result->HotelPrice); ?>
+            alert("not correct date")
         } else {
             document.getElementById('unit-price').innerHTML = diffDays *
                 <?php echo htmlentities($result->HotelPrice); ?>

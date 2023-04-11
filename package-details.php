@@ -21,7 +21,7 @@ if (isset($_POST['submit2'])) {
     $lastInsertId = $dbh->lastInsertId();
     if ($lastInsertId) {
         $msg = "Booked Successfully";
-        header("Location: package-payment.php");  
+        header("location: package-payment.php");  
     } else {
         $error = "Something went wrong. Please try again";
     }
@@ -158,6 +158,7 @@ if (isset($_POST['submit2'])) {
                 <p style="padding-top: 1%"><?php echo htmlentities($result->PackageDetails); ?> </p>
                 <br></br>
                 <div>
+                    <button> <a href="package-payment.php"> Proceed to pay</a></button>
                     <button> <a href="customize-package.php"> customize-package</a></button>
                 </div>
                 <div class="clearfix"></div>
