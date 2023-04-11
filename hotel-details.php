@@ -22,7 +22,7 @@ if (isset($_POST['submit3'])) {
     if ($lastInsertId) {
         $msg = "Booked Successfully";
         echo "message";
-        header("Location: hotel-payment.php");
+        
 
     } else {
         $error = "Something went wrong. Please try again";
@@ -112,119 +112,120 @@ if (isset($_POST['submit3'])) {
                 foreach ($results as $result) {    ?>
 
             <form action name="book" method="post">
-                <div class="selectroom_top" style="background-color:#ddd;  border-radius:10px; box-shadow: 10px 5px 5px teal;>
-							<div class=" col-md-4 selectroom_left wow fadeInLeft animated" data-wow-delay=".5s">
-                    <img src="admin/hotelimages/<?php echo htmlentities($result->HotelImage); ?>" class="img-responsive"
-                        alt="">
-                </div>
-                <div class="col-md-8 selectroom_right wow fadeInRight animated" data-wow-delay=".5s">
-                    <h2 style="color:black;"><?php echo htmlentities($result->HotelName); ?></h2>
-                    <p class="dow" style="color:black;">#PKG-<?php echo htmlentities($result->HotelId); ?></p>
-                    <p style="color:black;"><b>Hotel Type :</b> <?php echo htmlentities($result->HotelType); ?></p>
-                    <p style="color:black;"><b>Hotel Location :</b> <?php echo htmlentities($result->HotelLocation); ?>
-                    </p>
-                    <p><b>Features</b> <?php echo htmlentities($result->HotelFetures); ?></p>
-                    <div class="ban-bottom">
-                        <div class="bnr-right">
-                            <label class="inputLabel">From</label>
-                            <input class="date" id="datepicker" type="text" placeholder="dd-mm-yyyy" name="fromdate"
-                                required="">
-                        </div>
-                        <div class="bnr-right">
-                            <label class="inputLabel">To</label>
-                            <input class="date" id="datepicker1" type="text" placeholder="dd-mm-yyyy" name="todate">
-                        </div>
-                        <br></br>
-                        <br></br>
-
-
-
-
-
-
-
-
+                <div class="selectroom_top"
+                    style="background-color:#ddd;  border-radius:10px; box-shadow: 10px 5px 5px teal">
+                    <div class=" col-md-4 selectroom_left wow fadeInLeft animated" data-wow-delay=".5s">
+                        <img src="admin/hotelimages/<?php echo htmlentities($result->HotelImage); ?>"
+                            class="img-responsive" alt="">
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="grand">
+                    <div class="col-md-8 selectroom_right wow fadeInRight animated" data-wow-delay=".5s">
+                        <h2 style="color:black;"><?php echo htmlentities($result->HotelName); ?></h2>
+                        <p class="dow" style="color:black;">#PKG-<?php echo htmlentities($result->HotelId); ?></p>
+                        <p style="color:black;"><b>Hotel Type :</b> <?php echo htmlentities($result->HotelType); ?></p>
+                        <p style="color:black;"><b>Hotel Location :</b>
+                            <?php echo htmlentities($result->HotelLocation); ?>
+                        </p>
+                        <p><b>Features</b> <?php echo htmlentities($result->HotelFetures); ?></p>
+                        <div class="ban-bottom">
+                            <div class="bnr-right">
+                                <label class="inputLabel">From</label>
+                                <input placeholder="yyyy/mm/dd" class="date" id="datepicker" type="text" name="fromdate"
+                                    required>
+                            </div>
+                            <div class="bnr-right">
+                                <label class="inputLabel">To</label>
+                                <input placeholder="yyyy/mm/dd" class="date" id="datepicker1" type="text" name="todate"
+                                    required onchange="diff()">
+                            </div>
+                            <br></br>
+                            <br></br>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="grand">
 
-                        <p>Grand Total</p>
-                        <h3 id="unit-price">
+                            <p>Grand Total</p>
+                            <h3 id="unit-price"> <?php echo htmlentities($result->HotelPrice); ?> Tk</h3>
 
+                            <h2 id="total-price"> Total </h2>
+                            <br></br>
 
-                            <?php
-
-
-
-                                    echo htmlentities($result->HotelPrice); ?> Tk</h3>
-
-                        <h2 id="total-price"> Total </h2>
-                        <br></br>
+                        </div>
 
                     </div>
 
-                </div>
-
-                <h3>Hotel Details</h3>
-                <p style="padding-top: 1%;color:black;"><?php echo htmlentities($result->HotelDetails); ?> </p>
-                <div class="clearfix"></div>
-        </div>
-        <div class="selectroom_top">
-            <h2>Hotels</h2>
-            <div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms"
-                data-wow-delay="500ms"
-                style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
-                <ul>
-
-
-                    <li class="spe">
-                        <label class="inputLabel">Additional Infos</label>
-                        <input class="special" type="text" name="comment" required="">
-                    </li>
-                    <?php if ($_SESSION['login']) { ?>
-                    <li class="spe" align="center">
-                        <button type="submit" name="submit3" class="btn-primary btn">Book</button>
-                    </li>
-                    <?php } else { ?>
-                    <li class="sigi" align="center" style="margin-top: 1%">
-                        <a href="#" data-toggle="modal" data-target="#myModal4" class="btn-primary btn"> Book</a>
-                    </li>
-                    <?php } ?>
+                    <h3>Hotel Details</h3>
+                    <p style="padding-top: 1%;color:black;"><?php echo htmlentities($result->HotelDetails); ?> </p>
                     <div class="clearfix"></div>
-                </ul>
-            </div>
+                </div>
+                <div class="selectroom_top">
+                    <h2>Hotels</h2>
+                    <div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms"
+                        data-wow-delay="500ms"
+                        style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
+                        <ul>
 
-        </div>
-        </form>
-        <?php }
+
+                            <li class="spe">
+                                <label class="inputLabel">Additional Infos</label>
+                                <input class="special" type="text" name="comment" required="">
+                            </li>
+                            <?php if ($_SESSION['login']) { ?>
+                            <li class="spe" align="center">
+                                <button type="submit" name="submit3" class="btn-primary btn">Book</button>
+                            </li>
+                            <?php } else { ?>
+                            <li class="sigi" align="center" style="margin-top: 1%">
+                                <a href="#" data-toggle="modal" data-target="#myModal4" class="btn-primary btn">
+                                    Book</a>
+                            </li>
+                            <?php } ?>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+
+                </div>
+            </form>
+            <?php }
             } ?>
 
 
-    </div>
+        </div>
     </div>
     <script>
-    $a = document.getElementById('datepicker').value.substr(8, 10);
-    $b = document.getElementById('datepicker1').value.substr(8, 10);
-
-    $a1 = parseInt($a);
-    $a2 = parseInt($b);
-    $diff = $b - $a;
-    document.getElementById('unit-price').innerHTML = $diff * <?php  echo htmlentities($result->HotelPrice); ?>
-
+    //Changed Code Start
+    function diff() {
+        var sdate = new Date(document.getElementById("datepicker").value);
+        var edate = new Date(document.getElementById("datepicker1").value);
+        var diffseconds = Math.abs(edate - sdate);
+        var msInADay = 1000 * 60 * 60 * 24;
+        var diffDays = Math.floor(
+            diffseconds / msInADay
+        );
+        if (sdate > edate) {
+            console.log("Greater");
+            alert("Please check the date")
+            document.getElementById('unit-price').innerHTML = "-" + diffDays *
+                <?php echo htmlentities($result->HotelPrice); ?>
+        } else {
+            document.getElementById('unit-price').innerHTML = diffDays *
+                <?php echo htmlentities($result->HotelPrice); ?>
+        }
+    }
+    //changed code end
 
     //num will equal 1 as a int
     </script>
     <!--- /selectroom ---->
-    <<!--- /footer-top ---->
-        <?php include('includes/footer.php'); ?>
-        <!-- signup -->
-        <?php include('includes/signup.php'); ?>
-        <!-- //signu -->
-        <!-- signin -->
-        <?php include('includes/signin.php'); ?>
-        <!-- //signin -->
-        <!-- write us -->
-        <?php include('includes/write-us.php'); ?>
+    <!--- /footer-top ---->
+    <?php include('includes/footer.php'); ?>
+    <!-- signup -->
+    <?php include('includes/signup.php'); ?>
+    <!-- //signu -->
+    <!-- signin -->
+    <?php include('includes/signin.php'); ?>
+    <!-- //signin -->
+    <!-- write us -->
+    <?php include('includes/write-us.php'); ?>
 </body>
 
 </html>
