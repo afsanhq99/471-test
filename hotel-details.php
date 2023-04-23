@@ -125,15 +125,15 @@ if (isset($_POST['submit3'])) {
                         <p style="color:black;"><b>Hotel Location :</b>
                             <?php echo htmlentities($result->HotelLocation); ?>
                         </p>
-                        <p><b>Features</b> <?php echo htmlentities($result->HotelFetures); ?></p>
+                        <p style="color:black;"><b>Features</b> <?php echo htmlentities($result->HotelFetures); ?></p>
                         <div class="ban-bottom">
                             <div class="bnr-right">
-                                <label class="inputLabel">From</label>
+                                <label class="inputLabel"><b>From</b></label>
                                 <input placeholder="yyyy/mm/dd" class="date" id="datepicker" type="text" name="fromdate"
                                     required>
                             </div>
                             <div class="bnr-right">
-                                <label class="inputLabel">To</label>
+                                <label class="inputLabel"><b>To</b></label>
                                 <input placeholder="yyyy/mm/dd" class="date" id="datepicker1" type="text" name="todate"
                                     required onchange="diff()">
                             </div>

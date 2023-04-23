@@ -18,7 +18,7 @@ if ($_SESSION['login']) { ?>
 
                                 $email = htmlentities($_SESSION['login']);
                                 $username = explode("@", $email)[0];
-                                echo $username; // Output: mahid
+                                echo strtoupper($username); // Output: mahid
 
 
 

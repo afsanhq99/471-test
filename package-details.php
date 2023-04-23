@@ -159,7 +159,7 @@ if (isset($_POST['submit2'])) {
                 <br></br>
                 <div>
                     <button> <a href="package-payment.php"> Proceed to pay</a></button>
-                    <button> <a href="customize-package.php"> customize-package</a></button>
+                    <button> <a href="customize_package.php"> customize-package</a></button>
                 </div>
                 <div class="clearfix"></div>
         </div>
